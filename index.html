@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.main{
+			border: 1px solid;
+			width: 600px;
+			height: 600px;
+			margin: auto;
+			text-align: center;
+		}
+		.blog1{
+			border: 1px solid;
+			margin: 10px;
+			height: 70%;
+			text-align: center;
+		}
+		.img{
+			display: inline;
+			
+		}
+		.title{
+			display: inline;
+			text-align: center;	
+			width: 50%;	
+			border: 1 solid;	
+		}
+		.t{
+			text-align: center;
+			width: 100%;
+				
+		}
+		.blog2{
+			border: 1px solid;
+			margin: 10px;
+			height: 50%;
+		}
+		
+		.scor{
+			width: 50%;
+			
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="main" id="main">
+			<div class="t">
+				<div class="title">Robot</div>
+				<div class="title">Gamer</div>
+			</div>
+		<div class="blog1">
+			<h1>VS</h1>
+			<div class="img">
+				<img id="img1" src="" alt="" width="200px" height="200px">
+			</div>
+			
+			<div class="img">
+				<img id="img2" src="" alt="" width="200px" height="200px"> 
+			</div>
+		</div>
+		<div>
+			<div class="blog2">
+				<div class="scor">
+					<label id="gamer" for="">Gamer Scor: <b></b> </label>
+				</div>
+				<div class="scor">
+					<label  for="" id="robot">Robot Scor: <b></b> </label>
+				</div>
+				<p id="result"></p>
+			</div>
+			<input type="text" id="txt">
+			<button onclick="Game()" >game</button>
+		</div>
+	</div>
+
+	<script>
+		var main = document.getElementById('main')
+		var image2 = document.getElementById("img2");
+		var image1 = document.getElementById("img1");
+		var text = document.getElementById("txt");
+		var scorGamer = document.getElementById("gamer");
+		var scorRobot = document.getElementById("robot");
+		var result = document.getElementById("result");
+		var sG = 0
+		var sR = 0
+		function Game(){
+			var random  =  Math.floor(Math.random() * (3 - 1 + 1) ) + 1;
+			image2.src =  "img/"+random+".jpg"
+			image1.src =  "img/"+text.value+".jpg"
+			
+			var to = random.toString()
+			if(to == text.value){
+				result.innerHTML = "nichiya"
+			}
+			if(to === '1' && text.value === "2"){
+				result.innerHTML = "kagaz tashti jabat. Siz jendiniz"
+				sG++
+			}
+			if(to === '1' && text.value === "3"){
+				result.innerHTML = "tash kaychini sindirat. Siz jenildiniz"
+				sR++
+			}
+			if(to === '2' && text.value === "1"){
+				result.innerHTML = "kagaz tashti jabat. Siz jenildiniz"
+				sR++
+			}
+			if(to === '2' && text.value === "3"){
+				result.innerHTML = "kagazdi kaychi kirkat. Siz jendiniz"
+				sG++
+			}
+			if(to === '3' && text.value === "1"){
+				result.innerHTML = "tash kauchini sindirat. Siz jendiniz"
+				sG++
+			}
+			if(to === '3' && text.value === "2"){
+				result.innerHTML = "kaychi kagazdi kirkat. Siz jenildiniz"
+				sR++
+			}
+			if(sG >= 5 ){
+				main.innerHTML = "<h1>Game Over. Siz jendiniz<h1>"
+			}
+			if(sR >= 5 ){
+				main.innerHTML = "<h1>Game Over. Siz jenildiniz :( <h1>"
+			}
+			scorGamer.innerHTML = sG
+			scorRobot.innerHTML = sR
+			
+		}
+	</script>
+</body>
+</html>
